@@ -129,6 +129,7 @@ func stringifyLoadMode(mode packages.LoadMode) string {
 		packages.NeedExportsFile:     "exports_file",
 		packages.NeedFiles:           "files",
 		packages.NeedImports:         "imports",
+		packages.NeedModule:          "module",
 		packages.NeedName:            "name",
 		packages.NeedSyntax:          "syntax",
 		packages.NeedTypes:           "types",
@@ -192,7 +193,7 @@ func (cl *ContextLoader) loadPackages(ctx context.Context, loadMode packages.Loa
 		Context:    ctx,
 		BuildFlags: buildFlags,
 		Logf:       cl.debugf,
-		//TODO: use fset, parsefile, overlay
+		// TODO: use fset, parsefile, overlay
 	}
 
 	args := cl.buildArgs()

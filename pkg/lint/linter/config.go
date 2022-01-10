@@ -63,7 +63,20 @@ func (lc *Config) WithLoadFiles() *Config {
 
 func (lc *Config) WithLoadForGoAnalysis() *Config {
 	lc = lc.WithLoadFiles()
-	lc.LoadMode |= packages.NeedImports | packages.NeedDeps | packages.NeedExportsFile | packages.NeedTypesSizes
+
+	// HACK HACK HACK
+	lc.LoadMode |= packages.NeedName |
+		packages.NeedFiles |
+		packages.NeedCompiledGoFiles |
+		packages.NeedImports |
+		packages.NeedDeps |
+		packages.NeedExportsFile |
+		packages.NeedTypes |
+		packages.NeedSyntax |
+		packages.NeedTypesInfo |
+		packages.NeedTypesSizes |
+		packages.NeedModule
+
 	lc.IsSlow = true
 	return lc
 }
